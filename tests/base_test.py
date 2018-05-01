@@ -7,5 +7,5 @@ class BaseTest(unittest.TestCase):
     param = Parameters()
     loginpage = LoginPage(param.w, param.rootUrl)
 
-    def test_setUp(self):
+    def setUp(self):
         self.param.w.get(self.param.rootUrl)
