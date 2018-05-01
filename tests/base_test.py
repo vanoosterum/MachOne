@@ -9,3 +9,4 @@ class BaseTest(unittest.TestCase):
 
     def test_setUp(self):
         self.param.w.get(self.param.rootUrl)
+        assert self.loginpage.check_page()
