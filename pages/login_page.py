@@ -1,14 +1,14 @@
-from page_objects import PageObject, PageElement
+import page_objects
 
 
-class LoginPage(PageObject):
+class LoginPage(page_objects.PageObject):
+    username_field = page_objects.PageElement(id_="username")
+    password_field = page_objects.PageElement(id_="password")
+    username_and_password_fields = page_objects.MultiPageElement(xpath='//input[@type"text"]')
 
-    def check_page(self):
-        return "Authentication" in self.w.title
+    # def check_page(self):  #    """
 
-
-username_field = PageElement(id_="username")
-password_field = PageElement(id_="password")
+    #   :rtype: object  #   """  # type: () -> object  #   return "QL" in self.w.title
 
 
 def login(self, homepage, username, password):
@@ -16,3 +16,8 @@ def login(self, homepage, username, password):
     self.password_field.send_keys(password)
     self.password_field.submit()
     return homepage.check_page()
+
+
+def multi_page_elements_test(self, text):
+    self.username_password_fields = text
+    return text in self.username_field.get_attribute("value") and text in self.password_field.get_attribute("value")
