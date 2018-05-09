@@ -8,6 +8,6 @@ browser.find_by_name('username').fill("DDAVIES")
 browser.find_by_name('password').fill("DDAVIES")
 browser.find_by_text('Login').first.click()
 if browser.is_text_present('Dashboard', wait_time=15):
-    print "Yes, found it! :)"
+    print "PASS"
 else:
-    print "No, didn't find it :("
+    print "FAIL"
