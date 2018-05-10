@@ -22,19 +22,13 @@ else:
 browser.find_by_text('Login').first.click()
 
 if browser.is_text_present('Dashboard', wait_time=15):
-        browser.find_by_text('DD').first.click()
-        if browser.is_text_present('Session', wait_time=10):
-                browser.find_by_text('Log Out').first.click()
-                f = open("test.txt", "a")
-                f.write(time.strftime("%c"))
-                f.write(" Log In Passed. \n")
-                f.close()
-        else:
-            f = open("test.txt", "a")
-            f.write(time.strftime("%c"))
-            f.write(" Log Out Failed. \n")
-            f.close()
+    f = open("test.txt", "w")
+    f.write(time.strftime("%c"))
+    f.write(" Log In Passed. \n")
+    f.close()
+
 else:
+    browser.quit()
     f = open("test.txt", "a")
     f.write(time.strftime("%c"))
     f.write(" Log In Failed. \n")
