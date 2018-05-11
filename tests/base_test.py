@@ -9,7 +9,7 @@ class BaseTest(unittest.TestCase):
     loginpage = LoginPage(param.w, param.url)
     homepage = HomePage(param.w, param.url)
 
-    def test_setUp(self):
+    def setUp(self):
         self.param.w.visit(self.param.url)
         assert self.loginpage.check_page()
 
