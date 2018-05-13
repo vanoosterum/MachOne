@@ -1,23 +1,39 @@
-import page_objects
+from splinter import Browser
+import time
+import unittest
 
 
-class LoginPage(page_objects.PageObject):
-    username_field = page_objects.PageElement(id_="username")
-    password_field = page_objects.PageElement(id_="password")
-    username_and_password_fields = page_objects.MultiPageElement(xpath='//input[@type"text"]')
+class TestLogin(unittest.TestCase):
+    def test_Log(self):
+        username = 'DDAVIES'
+        password = 'DDAVIES'
 
-    # def check_page(self):  #    """
+        browser = Browser('chrome')
+        url = "http://qlv5-fe-qa.azurewebsites.net"
 
-    #   :rtype: object  #   """  # type: () -> object  #   return "QL" in self.w.title
+        browser.visit(url)
 
+        if browser.is_text_present('Login', wait_time=15):
+            f = open("test.txt", "w")
+            f.write(time.strftime("%c"))
+            f.write(" Navigation Passed. \n")
+            browser.find_by_id('username').fill(username)
+            browser.find_by_id('password').fill(password)
+            browser.find_by_text('Login').first.click()
 
-def login(self, homepage, username, password):
-    self.username_field.send_keys(username)
-    self.password_field.send_keys(password)
-    self.password_field.submit()
-    return homepage.check_page()
-
-
-def multi_page_elements_test(self, text):
-    self.username_password_fields = text
-    return text in self.username_field.get_attribute("value") and text in self.password_field.get_attribute("value")
+            if browser.is_text_present('Dashboard', wait_time=10):
+                f = open("logn.txt", "w")
+                f.write(time.strftime("%c"))
+                f.write(" Log In Passed. \n")
+                f.close()
+            else:
+                f = open("logn.txt", "w")
+                f.write(time.strftime("%c"))
+                f.write(" Log In Failed. \n")
+                f.close()
+        else:
+            browser.quit()
+            f = open("test.txt", "w")
+            f.write(time.strftime("%c"))
+            f.write(" Navigation Failed. \n")
+            f.close()
