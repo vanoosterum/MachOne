@@ -1,6 +1,6 @@
 import unittest
 from utils import Parameters
-from login_page import LoginPage
+import login_page
 from home_page import HomePage
 
 

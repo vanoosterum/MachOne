@@ -1,8 +1,8 @@
-from selenium import webdriver
+from splinter import Browser
 
 
-class Parameters():
-    def __init__(self):
-        self.w = webdriver.Chrome()  # To start Chrome
-        self.rootUrl = "http://qlv5-fe-qa.azurewebsites.net"  # To navigate to the Aareon Application
-       # self.w.implicitly_wait(20)
+browser = Browser('chrome')
+url = "http://qlv5-fe-qa.azurewebsites.net"
+browser.visit(url)
+browser.find_by_name('username').fill("DDAVIES")
+browser.find_by_name('password').fill("DDAVIES")

@@ -1,6 +1,6 @@
-from page_objects import PageObject, PageElement
+from page_objects import PageObject
 
 
 class HomePage(PageObject):
     def check_page(self):
-        return "QLWebApp" in self.w.title
+        self.w.is_text_present('Dashboard', wait_time=15)

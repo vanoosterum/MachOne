@@ -13,5 +13,5 @@ suite.addTests(loader.loadTestsFromModule(login_page))
 suite.addTests(loader.loadTestsFromModule(feedback_page))
 
 # initialize a runner, pass it your suite and run it
-runner = unittest.TextTestRunner(verbosity=3)
+runner = unittest.TextTestRunner(verbosity=5)
 result = runner.run(suite)
