@@ -1,11 +1,13 @@
 from splinter import Browser
 
 
-class Parameters():
-    def __init__(self):
-        self.browser = Browser('chrome')
-        self.url = "http://qlv5-fe-qa.azurewebsites.net"
-        self.browser.visit(self.url)
-        self.browser.find_by_name('username').fill("DDAVIES")
-        self.browser.find_by_name('password').fill("DDAVIES")
-        self.browser.find_by_text('Login').first.click()
+class Parameters:
+    url = "http://qlv5-fe-qa.azurewebsites.net"
+    browser = Browser('chrome')
+    username = 'DDAVIES'
+    password = 'DDAVIES'
+    client = 'Johnson'
+    nameinput = 'Helma van Oosterum'
+    emailinput = 'helma.vanoosterum@aareon.co.uk'
+    editclient = '/html/body/ql-app-root/main/div/ql-workspace/div/div/div/ql-client-dashboard/div/div[1]/' \
+                 'ql-client-info/div/div/div/div[1]/div/a/i'
