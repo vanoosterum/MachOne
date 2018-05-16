@@ -13,10 +13,21 @@ class TestLogIn(unittest.TestCase):
         self.param.browser.find_by_name('username').fill(self.param.username)
         self.param.browser.find_by_name('password').fill(self.param.password)
         self.param.browser.find_by_text('Login').first.click()
+        if self.param.browser.is_text_present('Dashboard', wait_time=10):
+            f = open("login.txt", "w")
+            f.write("***Login*** \n")
+            f.write(time.strftime("%c"))
+            f.write(" PASS \n")
+            f.close()
+        else:
+            f = open("login.txt", "w")
+            f.write("***Login Failed. Tests aborted*** \n")
+            f.write(time.strftime("%c"))
+            f.write(" PASS \n")
+            f.close()
+            self.param.browser.quit()
 
     def test_ClientEdit(self):
-        self.param.browser.is_text_present('Dashboard', wait_time=10)
-        self.param.browser.wait_time = 30
         self.param.browser.find_link_by_partial_text(self.param.client).first.click()
         self.param.browser.wait_time = 30
         if self.param.browser.is_text_present('Client', wait_time=40):
@@ -34,10 +45,10 @@ class TestLogIn(unittest.TestCase):
                 f.write(" PASS \n")
                 f.close()
             else:
-                self.param.browser.quit()
                 f = open("dashb.txt", "a")
+                f.write("***Open Client Edit Screen*** \n")
                 f.write(time.strftime("%c"))
-                f.write(" Edit Client Not Displayed. \n")
+                f.write(" FAIL - Tests Aborted \n")
                 f.close()
             self.param.browser.find_by_xpath(self.param.editclstitle).first.click()
             self.param.browser.find_by_xpath(self.param.editcltitle).first.click()
@@ -78,6 +89,7 @@ class TestLogIn(unittest.TestCase):
         else:
             self.param.browser.quit()
             f = open("dash.txt", "w")
+            f.write("***View Client Dashboard*** \n")
             f.write(time.strftime("%c"))
-            f.write(" Client Dashboard Not Displayed. \n")
+            f.write(" FAIL - Tests Aborted \n")
             f.close()
